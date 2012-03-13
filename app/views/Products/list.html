@@ -1,23 +1,19 @@
-#{if hotels}
+#{if products}
     <table>
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Address</th>
-                <th>City, State</th>
-                <th width="8%">Zip</th>
+                <th>Price</th>
                 <th width="13%">Action</th>
             </tr>
         </thead>
         <tbody>
-            #{list hotels, as:'hotel'}
+            #{list products, as:'product'}
                 <tr>
-                    <td>${hotel.name}</td>
-                    <td>${hotel.address}</td>
-                    <td>${hotel.city}, ${hotel.state}, ${hotel.country}</td>
-                    <td>${hotel.zip}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
                     <td>
-                        <a href="@{show(hotel.id)}">View Hotel</a>
+                        <a href="@{show(product.id)}">View Product</a>
                     </td>
                 </tr>
             #{/list}

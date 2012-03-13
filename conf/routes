@@ -3,16 +3,16 @@
 # ~~~~
 
 GET     /                                       Application.index
-GET     /hotels                                 Hotels.index
-GET     /hotels/list                            Hotels.list
-GET     /hotels/{id}                            Hotels.show
-GET     /hotels/{id}/booking                    Hotels.book
-POST    /hotels/{id}/booking                    Hotels.confirmBooking
-DELETE  /bookings/{id}                          Hotels.cancelBooking
+GET     /products                               Products.index
+GET     /hotels/list                            Products.list
+GET     /hotels/{id}                            Products.show
+GET     /hotels/{id}/booking                    Products.book
+POST    /hotels/{id}/booking                    Products.confirmBooking
+DELETE  /bookings/{id}                          Products.cancelBooking
 GET     /register                               Application.register
 POST    /register                               Application.saveUser
-GET     /settings                               Hotels.settings
-POST    /settings                               Hotels.saveSettings
+GET     /settings                               Products.settings
+POST    /settings                               Products.saveSettings
 POST    /login                                  Application.login
 GET     /logout                                 Application.logout
 

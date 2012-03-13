@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'Search' /}
 
-<h1>Search Hotels</h1>
+<h1>Search Products</h1>
 
 <p>
     <input type="text" id="search" size="30">
-    <input type="submit" id="submit" value="Find Hotels">
+    <input type="submit" id="submit" value="Find Products">
 
     <br>
 
@@ -65,7 +65,7 @@
     
 </script>
 
-<h1>Current Hotel Bookings</h1>
+<h1>Current Product Bookings</h1>
 
 #{ifnot bookings}
     <p>
@@ -77,28 +77,20 @@
        <thead>
            <tr>
                <th>Name</th>
-               <th>Address</th>
-               <th>City, State</th>
-               <th>Check in</th>
-               <th>Check out</th>
-               <th>Confirmation number</th>
+               <th>Price</th>
                <th>Action</th>
            </tr>
        </thead>
        <tbody>
-           #{list bookings, as:'booking'}
-               <tr>
-                   <td>${booking.hotel.name}</td>
-                   <td>${booking.hotel.address}</td>
-                   <td>${booking.hotel.city}, ${booking.hotel.state}, ${booking.hotel.country}</td>
-                   <td>${booking.checkinDate.format('yyyy-MM-dd')}</td>
-                   <td>${booking.checkoutDate.format('yyyy-MM-dd')}</td>
-                   <td>${booking.id}</td>
-                   <td>
-                        #{a @cancelBooking(booking.id)}Cancel#{/a}
-                   </td>
-               </tr>
-           #{/list}
+           *{#{list bookings, as:'booking'}}*
+               *{<tr>}*
+                   *{<td>${booking.hotel.name}</td>}*
+                   *{<td>${booking.id}</td>}*
+                   *{<td>}*
+                        *{#{a @cancelBooking(booking.id)}Cancel#{/a}}*
+                   *{</td>}*
+               *{</tr>}*
+           *{#{/list}}*
        </tbody>
    </table> 
 #{/else}

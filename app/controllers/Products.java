@@ -1,14 +1,12 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
-import play.data.validation.*;
 
 import java.util.*;
 
 import models.*;
 
-public class Hotels extends Application {
+public class Products extends Application {
     
     @Before
     static void checkUser() {
@@ -26,29 +24,29 @@ public class Hotels extends Application {
     }
 
     public static void list(String search, Integer size, Integer page) {
-        List<Hotel> hotels = null;
+        List<Product> products = null;
         page = page != null ? page : 1;
         if(search.trim().length() == 0) {
-            hotels = Hotel.all().fetch(page, size);
+            products = Product.all().fetch(page, size);
         } else {
             search = search.toLowerCase();
-            hotels = Hotel.find("lower(name) like ? OR lower(city) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
+            products = Product.find("lower(name) like ? ", "%" + search + "%").fetch(page, size);
         }
-        render(hotels, search, size, page);
+        render(products, search, size, page);
     }
     
     public static void show(Long id) {
-        Hotel hotel = Hotel.findById(id);
+        Product hotel = Product.findById(id);
         render(hotel);
     }
     
     public static void book(Long id) {
-        Hotel hotel = Hotel.findById(id);
+        Product hotel = Product.findById(id);
         render(hotel);
     }
     
     public static void confirmBooking(Long id, Booking booking) {
-        Hotel hotel = Hotel.findById(id);
+        Product hotel = Product.findById(id);
         booking.hotel = hotel;
         booking.user = connected();
         validation.valid(booking);

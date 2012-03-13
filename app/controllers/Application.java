@@ -30,7 +30,7 @@ public class Application extends Controller {
 
     public static void index() {
         if(connected() != null) {
-            Hotels.index();
+            Products.index();
         }
         render();
     }
@@ -48,7 +48,7 @@ public class Application extends Controller {
         user.create();
         session.put("user", user.username);
         flash.success("Welcome, " + user.name);
-        Hotels.index();
+        Products.index();
     }
     
     public static void login(String username, String password) {
@@ -56,7 +56,7 @@ public class Application extends Controller {
         if(user != null) {
             session.put("user", user.username);
             flash.success("Welcome, " + user.name);
-            Hotels.index();         
+            Products.index();
         }
         // Oops
         flash.put("username", username);

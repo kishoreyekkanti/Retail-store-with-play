@@ -16,7 +16,7 @@ public class Booking extends Model {
     
     @Required
     @ManyToOne
-    public Hotel hotel;
+    public Product hotel;
     
     @Required
     @Temporal(TemporalType.DATE) 
@@ -39,7 +39,7 @@ public class Booking extends Model {
     public boolean smoking;
     public int beds;
 
-    public Booking(Hotel hotel, User user) {
+    public Booking(Product hotel, User user) {
         this.hotel = hotel;
         this.user = user;
     }
