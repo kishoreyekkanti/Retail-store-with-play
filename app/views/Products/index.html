@@ -18,52 +18,29 @@
 </p>
 
 <div id="result">
+#{if products}
+    <table>
+        <thead>
+        <tr>
+            <th width="50%">Name</th>
+            <th width="25%">Price</th>
+            <th width="25%">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list products, as:'product'}
+        <tr>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td>
+                <a href="@{show(product.id)}">Order</a>
+            </td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+#{/if}
 </div>
-
-<script type="text/javascript" charset="${_response_encoding}">
-
-    // Rebuild state
-    $('#search').val(sessvars.search)    
-    if(sessvars.page == undefined) {
-        sessvars.page = 1
-    }
-    if(sessvars.size == undefined) {
-        sessvars.size = 10
-    }
-    $('#size option[value='+sessvars.size+']').attr('selected', 'true')
-    
-    // Search function
-    var search = function() {
-        sessvars.search = $('#search').val()
-        sessvars.size = $('#size').val()
-        var listAction = #{jsAction @list(':search', ':size', ':page') /} 
-        $('#result').load(listAction({search: sessvars.search, size: sessvars.size, page: sessvars.page}), function() {
-            $('#content').css('visibility', 'visible')
-        })
-    }
-    
-    // Events handler
-    $('#submit').click(function() {
-        sessvars.page = 1
-        search()
-    })
-    $('#search').keyup(function() {
-        sessvars.page = 1
-        search()
-    })
-    $('#nextPage').live('click', function(e) {
-        sessvars.page = $(this).attr('href')
-        e.preventDefault()
-        search()        
-    })
-    
-    // Init
-    if(sessvars.search != undefined) {
-        $('#content').css('visibility', 'hidden')
-        search()
-    }
-    
-</script>
 
 <h1>Current Product Orders</h1>
 

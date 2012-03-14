@@ -20,7 +20,9 @@ public class Products extends Application {
     
     public static void index() {
         List<ProductOrder> productOrders = ProductOrder.find("byUser", connected()).fetch();
-        render(productOrders);
+        List<Product> products =  Product.all().fetch();
+
+        render(products, productOrders);
     }
 
     public static void list(String search, Integer size, Integer page) {

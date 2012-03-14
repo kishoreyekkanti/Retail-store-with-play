@@ -5,3 +5,101 @@
 #   email: bob@gmail.com
 #   password: secret
 #   fullname: Bob
+
+# Users
+
+models.User(gavin):
+    username:   guillaume
+    password:   foobar
+    name:       Guillaume Bort
+
+models.User(demo):
+    username:   demo
+    password:   demo
+    name:       Demo User
+
+models.User(admin@acmecorp.com):
+    username: admin@acmecorp.com
+    password: admin@acmecorp.com
+    name:     Admin User
+# Products
+
+models.Product(h1):
+    price:      120
+    name:       Marriott Courtyard
+
+models.Product(h2):
+    price:      180
+    name:       Doubletree
+
+models.Product(h3):
+    price:      450
+    name:       W Product
+
+models.Product(h4):
+    price:      450
+    name:       W Product
+
+models.Product(h5):
+    price:      250
+    name:       Product Rouge
+
+models.Product(h6):
+    price:      300
+    name:       70 Park Avenue Product
+
+models.Product(h7):
+    price:      300
+    name:       Conrad Miami
+
+models.Product(h8):
+    price:      80
+    name:       Sea Horse Inn
+
+models.Product(h9):
+    price:      90
+    name:       Super 8 Eau Claire Campus Area
+
+models.Product(h10):
+    price:      160
+    name:       Marriott Downtown
+
+models.Product(h11):
+    price:      200
+    name:       Hilton Diagonal Mar
+
+models.Product(h12):
+    price:      210
+    name:       Hilton Tel Aviv
+
+models.Product(h13):
+    price:      240
+    name:       InterContinental Tokyo Bay
+
+models.Product(h14):
+    price:      130
+    name:       Product Beaulac
+
+models.Product(h15):
+    price:      140
+    name:       Conrad Treasury Place
+
+models.Product(h16):
+    price:      230
+    name:       Ritz Carlton
+
+models.Product(h17):
+    price:      460
+    name:       Ritz Carlton
+
+models.Product(h18):
+    price:      220
+    name:       Swissotel
+
+models.Product(h19):
+    price:      250
+    name:       Meliá White House
+
+models.Product(h10):
+    price:      210
+    name:       Product Allegro
