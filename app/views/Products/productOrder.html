@@ -1,0 +1,66 @@
+#{extends 'main.html' /}
+#{set title:'Order ' + product.name /}
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/ui-lightness/jquery-ui-1.7.2.custom.css'}" />
+#{/set}
+
+<h1>ProductOrder product</h1>
+
+#{form @confirmOrder(product.id)}
+    <p>
+        <strong>Product Name:</strong> ${product.name}
+    </p>
+    <p>
+        <strong>Product Price:</strong> ${product.price}
+    </p>
+<hr/>
+
+    #{field 'productOrder.creditCard'}
+        <p class="${field.errorClass}">
+            <strong>Credit Card #:</strong> <input type="text" name="${field.name}" size="16" value="${productOrder?.creditCard}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'productOrder.creditCardName'}
+        <p class="${field.errorClass}">
+            <strong>Credit Card Name:</strong> <input type="text" name="${field.name}" size="16" value="${productOrder?.creditCardName}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    <p>
+        <strong>Credit Card Expiry:</strong> 
+        #{select 'productOrder.creditCardExpiryMonth', value:productOrder?.creditCardExpiryMonth}
+            #{option 1}Jan#{/option}
+            #{option 2}Feb#{/option}
+            #{option 3}Mar#{/option}
+            #{option 4}Apr#{/option}
+            #{option 5}May#{/option}
+            #{option 6}Jun#{/option}
+            #{option 7}Jul#{/option}
+            #{option 8}Aug#{/option}
+            #{option 9}Sep#{/option}
+            #{option 10}Oct#{/option}
+            #{option 11}Nov#{/option}
+            #{option 112}Dec#{/option}
+        #{/select}
+        #{select 'productOrder.creditCardExpiryYear', value:productOrder?.creditCardExpiryYear}
+            #{option 2008}2008#{/option}
+            #{option 2009}2009#{/option}
+            #{option 2010}2010#{/option}
+            #{option 2011}2011#{/option}
+            #{option 2012}2012#{/option}
+        #{/select}      
+    </p>    
+    <p class="buttons">
+        <input type="submit" value="Proceed"> <a href="@{show(product.id)}">Cancel</a>    
+    </p>
+#{/form}
+
+<script type="text/javascript" charset="${_response_encoding}">
+    $(function() {
+		$(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+	});
+</script>

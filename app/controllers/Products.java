@@ -19,8 +19,8 @@ public class Products extends Application {
     // ~~~
     
     public static void index() {
-        List<Booking> bookings = Booking.find("byUser", connected()).fetch();
-        render(bookings);
+        List<ProductOrder> productOrders = ProductOrder.find("byUser", connected()).fetch();
+        render(productOrders);
     }
 
     public static void list(String search, Integer size, Integer page) {
@@ -40,37 +40,37 @@ public class Products extends Application {
         render(product);
     }
     
-    public static void book(Long id) {
-        Product hotel = Product.findById(id);
-        render(hotel);
+    public static void productOrder(Long id) {
+        Product product = Product.findById(id);
+        render(product);
     }
     
-    public static void confirmBooking(Long id, Booking booking) {
-        Product hotel = Product.findById(id);
-        booking.hotel = hotel;
-        booking.user = connected();
-        validation.valid(booking);
+    public static void confirmOrder(Long id, ProductOrder productOrder) {
+        Product product = Product.findById(id);
+        productOrder.product = product;
+        productOrder.user = connected();
+        validation.valid(productOrder);
         
         // Errors or revise
         if(validation.hasErrors() || params.get("revise") != null) {
-            render("@book", hotel, booking);
+            render("@productOrder", product, productOrder);
         }
         
         // Confirm
         if(params.get("confirm") != null) {
-            booking.create();
-            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, hotel.name, booking.id);
+            productOrder.create();
+            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, product.name, productOrder.id);
             index();
         }
         
-        // Display booking
-        render(hotel, booking);
+        // Display productOrder
+        render(product, productOrder);
     }
     
-    public static void cancelBooking(Long id) {
-        Booking booking = Booking.findById(id);
-        booking.delete();
-        flash.success("Booking cancelled for confirmation number %s", booking.id);
+    public static void cancelOrder(Long id) {
+        ProductOrder productOrder = ProductOrder.findById(id);
+        productOrder.delete();
+        flash.success("ProductOrder cancelled for confirmation number %s", productOrder.id);
         index();
     }
     

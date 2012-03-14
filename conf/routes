@@ -4,11 +4,11 @@
 
 GET     /                                       Application.index
 GET     /products                               Products.index
-GET     /hotels/list                            Products.list
-GET     /products/{id}                            Products.show
-GET     /hotels/{id}/booking                    Products.book
-POST    /hotels/{id}/booking                    Products.confirmBooking
-DELETE  /bookings/{id}                          Products.cancelBooking
+GET     /products/list                          Products.list
+GET     /products/{id}                          Products.show
+GET     /products/{id}/productOrder                    Products.productOrder
+POST    /products/{id}/productOrder                    Products.confirmOrder
+DELETE  /productOrder/{id}                             Products.cancelOrder
 GET     /register                               Application.register
 POST    /register                               Application.saveUser
 GET     /settings                               Products.settings

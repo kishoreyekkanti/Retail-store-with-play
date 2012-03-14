@@ -63,7 +63,7 @@ public class Application extends Controller {
         User user = User.find("byUsernameAndPassword", username, password).first();
         if(user != null) {
             saveUserDetailsInSession(user);
-            flash.success("Welcome, " + user.name);
+            flash.success(flashMessage(user));
             Products.index();
         }
         // Oops
@@ -71,7 +71,14 @@ public class Application extends Controller {
         flash.error("Login failed");
         index();
     }
-    
+
+    private static String flashMessage(User user) {
+        StringBuffer flashMessage = new StringBuffer("Welcome, ");
+        flashMessage.append(user.name);
+        flashMessage.append(user.isAdmin()? ". You have logged in as Admin." : "");
+        return flashMessage.toString();
+    }
+
     static void saveUserDetailsInSession(User user){
         session.put("user", user.username);
         session.put("logged", user.id);

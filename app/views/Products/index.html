@@ -65,11 +65,11 @@
     
 </script>
 
-<h1>Current Product Bookings</h1>
+<h1>Current Product Orders</h1>
 
-#{ifnot bookings}
+#{ifnot productOrders}
     <p>
-        No Bookings Found
+        No Orders Found
     </p>
 #{/ifnot}
 #{else}
@@ -82,15 +82,15 @@
            </tr>
        </thead>
        <tbody>
-           *{#{list bookings, as:'booking'}}*
-               *{<tr>}*
-                   *{<td>${booking.hotel.name}</td>}*
-                   *{<td>${booking.id}</td>}*
-                   *{<td>}*
-                        *{#{a @cancelBooking(booking.id)}Cancel#{/a}}*
-                   *{</td>}*
-               *{</tr>}*
-           *{#{/list}}*
+           #{list productOrders, as:'productOrder'}
+               <tr>
+                   <td>${productOrder.product.name}</td>
+                   <td>${productOrder.product.price}</td>
+                   <td>
+                        #{a @cancelOrder(productOrder.id)}Cancel#{/a}
+                   </td>
+               </tr>
+           #{/list}
        </tbody>
    </table> 
 #{/else}

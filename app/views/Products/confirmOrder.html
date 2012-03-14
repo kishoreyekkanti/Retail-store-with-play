@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'Confirm ' + product.name + ' purchase' /}
+
+<h1>Confirm product productOrder</h1>
+
+#{form @confirmOrder(product.id)}
+    <p>
+        <strong>Name:</strong> ${product.name}
+    </p>
+    *{<p>}*
+        *{<strong>Total:</strong> ${productOrder.total.formatCurrency('USD')}}*
+    *{</p>}*
+
+    <p>
+        <strong>Credit card #:</strong> ${productOrder.creditCard}
+        <input type="hidden" name="productOrder.creditCard" value="${productOrder.creditCard}">
+        <input type="hidden" name="productOrder.creditCardName" value="${productOrder.creditCardName}">
+        <input type="hidden" name="productOrder.creditCardExpiryMonth" value="${productOrder.creditCardExpiryMonth}">
+        <input type="hidden" name="productOrder.creditCardExpiryYear" value="${productOrder.creditCardExpiryYear}">
+    </p>
+    
+    <p class="buttons">
+        <input type="submit" value="Confirm" name="confirm"> <input type="submit" value="Revise" name="revise"> <a href="@{show(product.id)}">Cancel</a>
+    </p>
+#{/form}
