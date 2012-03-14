@@ -14,7 +14,15 @@ public class Application extends Controller {
             renderArgs.put("user", user);
         }
     }
-    
+    @Before
+    static void checkSecure() {
+        Secure secure = getActionAnnotation(Secure.class);
+        if (secure != null) {
+            if (connectedUser() == null || (secure.admin() && !connectedUser().isAdmin())) {
+                forbidden();
+            }
+        }
+    }
     static User connected() {
         if(renderArgs.get("user") != null) {
             return renderArgs.get("user", User.class);
@@ -46,7 +54,7 @@ public class Application extends Controller {
             render("@register", user, verifyPassword);
         }
         user.create();
-        session.put("user", user.username);
+        saveUserDetailsInSession(user);
         flash.success("Welcome, " + user.name);
         Products.index();
     }
@@ -54,7 +62,7 @@ public class Application extends Controller {
     public static void login(String username, String password) {
         User user = User.find("byUsernameAndPassword", username, password).first();
         if(user != null) {
-            session.put("user", user.username);
+            saveUserDetailsInSession(user);
             flash.success("Welcome, " + user.name);
             Products.index();
         }
@@ -64,9 +72,17 @@ public class Application extends Controller {
         index();
     }
     
+    static void saveUserDetailsInSession(User user){
+        session.put("user", user.username);
+        session.put("logged", user.id);
+    }
     public static void logout() {
         session.clear();
         index();
+    }
+    static User connectedUser() {
+        String userId = session.get("logged");
+        return userId == null ? null : (User) User.findById(Long.parseLong(userId));
     }
 
 }

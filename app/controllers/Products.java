@@ -36,8 +36,8 @@ public class Products extends Application {
     }
     
     public static void show(Long id) {
-        Product hotel = Product.findById(id);
-        render(hotel);
+        Product product = Product.findById(id);
+        render(product);
     }
     
     public static void book(Long id) {

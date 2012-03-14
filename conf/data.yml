@@ -10,6 +10,10 @@ models.User(demo):
     password:   demo
     name:       Demo User
 
+models.User(admin@acmecorp.com):
+    username: admin@acmecorp.com
+    password: admin@acmecorp.com
+    name:     Admin User
 # Products
 
 models.Product(h1):

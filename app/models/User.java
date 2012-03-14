@@ -1,5 +1,6 @@
 package models;
 
+import play.Play;
 import play.db.jpa.*;
 import play.data.validation.*;
 import javax.persistence.*;
@@ -32,5 +33,8 @@ public class User extends Model {
     public String toString()  {
         return "User(" + username + ")";
     }
-    
+
+    public boolean isAdmin() {
+        return username.equals(Play.configuration.getProperty("acmecorp.adminEmail", ""));
+    }
 }

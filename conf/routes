@@ -5,7 +5,7 @@
 GET     /                                       Application.index
 GET     /products                               Products.index
 GET     /hotels/list                            Products.list
-GET     /hotels/{id}                            Products.show
+GET     /products/{id}                            Products.show
 GET     /hotels/{id}/booking                    Products.book
 POST    /hotels/{id}/booking                    Products.confirmBooking
 DELETE  /bookings/{id}                          Products.cancelBooking
