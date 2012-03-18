@@ -2,3 +2,12 @@
 *.ipr
 *.iws
 tmp/
+modules
+test-result/*.html
+javadoc/
+logs/
+*.log
+.classpath
+.project
+.settings/
+eclipse/
