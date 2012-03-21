@@ -3,6 +3,7 @@ package controllers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import play.test.Fixtures;
 
 public class ApplicationTest {

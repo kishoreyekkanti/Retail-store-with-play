@@ -3,7 +3,7 @@
 *.iws
 tmp/
 modules
-test-result/*.html
+test-result/
 javadoc/
 logs/
 *.log
