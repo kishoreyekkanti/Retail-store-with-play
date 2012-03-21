@@ -4,6 +4,7 @@ import play.db.jpa.*;
 import play.data.validation.*;
 import javax.persistence.*;
 import java.math.*;
+import java.util.List;
 
 @Entity
 public class Product extends Model {
@@ -34,4 +35,16 @@ public class Product extends Model {
     public BigDecimal getPrice() {
         return price;
     }
+
+	public static List<Product> list(String search, Integer size, Integer page) {
+        List<Product> products = null;
+        page = page != null ? page : 1;
+        if(search.trim().length() == 0) {
+            products = Product.all().fetch(page, size);
+        } else {
+            search = search.toLowerCase();
+            products = Product.find("lower(name) like ? ", "%" + search + "%").fetch(page, size);
+        }
+		return products;
+	}
 }

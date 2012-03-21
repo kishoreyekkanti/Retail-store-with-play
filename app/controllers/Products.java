@@ -26,14 +26,7 @@ public class Products extends Application {
     }
 
     public static void list(String search, Integer size, Integer page) {
-        List<Product> products = null;
-        page = page != null ? page : 1;
-        if(search.trim().length() == 0) {
-            products = Product.all().fetch(page, size);
-        } else {
-            search = search.toLowerCase();
-            products = Product.find("lower(name) like ? ", "%" + search + "%").fetch(page, size);
-        }
+    	List<Product> products = Product.list(search, size, page);
         render(products, search, size, page);
     }
     
@@ -64,6 +57,7 @@ public class Products extends Application {
             flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, product.getName(), productOrder.id);
             index();
         }
+       
         
         // Display productOrder
         render(product, productOrder);
