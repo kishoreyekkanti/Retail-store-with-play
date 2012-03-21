@@ -10,13 +10,28 @@ public class Product extends Model {
     
     @Required
     @MaxSize(50)
-    public String name;
+    private String name;
     
     @Column(precision=6, scale=2)
-    public BigDecimal price;
+    private BigDecimal price;
 
     public String toString() {
         return "Product(" + name + "," + price + ")";
     }
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
 }

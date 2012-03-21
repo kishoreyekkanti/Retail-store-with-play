@@ -1,9 +1,9 @@
-14 Mar 2012 16:57:06,494 INFO  ~ Starting /Users/yekkanti/projects/play-1.2.4/samples-and-tests/booking
-14 Mar 2012 16:57:07,044 WARN  ~ You're running Play! in DEV mode
-14 Mar 2012 16:57:07,117 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-14 Mar 2012 16:57:26,991 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL
-14 Mar 2012 16:57:27,607 INFO  ~ Application 'Acme Corp Retail Store' is now started !
-14 Mar 2012 16:58:07,268 ERROR ~ schema export unsuccessful
+19 Mar 2012 16:43:29,144 INFO  ~ Starting /Users/yekkanti/personalProjects/acmecorp/.
+19 Mar 2012 16:43:29,147 INFO  ~ Module mockito is available (/Users/yekkanti/personalProjects/acmecorp/./modules/mockito-0.1)
+19 Mar 2012 16:43:29,662 WARN  ~ You're running Play! in DEV mode
+19 Mar 2012 16:43:30,705 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL
+19 Mar 2012 16:43:31,349 INFO  ~ Application 'Acme Corp Retail Store' is now started !
+19 Mar 2012 16:43:32,630 ERROR ~ schema export unsuccessful
 org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-149]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
 	at org.h2.message.DbException.get(DbException.java:167)

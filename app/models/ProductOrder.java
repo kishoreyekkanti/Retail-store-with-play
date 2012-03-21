@@ -36,8 +36,8 @@ public class ProductOrder extends Model {
    
     public String getDescription() {
         DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        return product ==null ? null : product.name +
-            ", " + product.price ;
+        return product ==null ? null : product.getName() +
+            ", " + product.getPrice() ;
     }
 
 

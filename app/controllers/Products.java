@@ -61,7 +61,7 @@ public class Products extends Application {
         // Confirm
         if(params.get("confirm") != null) {
             productOrder.create();
-            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, product.name, productOrder.id);
+            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, product.getName(), productOrder.id);
             index();
         }
         
