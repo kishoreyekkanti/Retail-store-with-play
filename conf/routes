@@ -2,19 +2,19 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                                       Application.index
+GET     /                                       Users.index
 GET     /products                               Products.index
 GET     /products/list                          Products.list
 GET     /products/{id}                          Products.show
 GET     /products/{id}/productOrder                    Products.productOrder
 POST    /products/{id}/productOrder                    Products.confirmOrder
 DELETE  /productOrder/{id}                             Products.cancelOrder
-GET     /register                               Application.register
-POST    /register                               Application.saveUser
+GET     /register                               Users.register
+POST    /register                               Users.saveUser
 GET     /settings                               Products.settings
 POST    /settings                               Products.saveSettings
-POST    /login                                  Application.login
-GET     /logout                                 Application.logout
+POST    /login                                  Users.login
+GET     /logout                                 Users.logout
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

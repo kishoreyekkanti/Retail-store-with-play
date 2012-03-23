@@ -12,11 +12,9 @@ public class Products extends Application {
     static void checkUser() {
         if(connected() == null) {
             flash.error("Please log in first");
-            Application.index();
+            Users.index();
         }
     }
-    
-    // ~~~
     
     public static void index() {
         List<ProductOrder> productOrders = ProductOrder.find("byUser", connected()).fetch();
