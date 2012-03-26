@@ -1,9 +1,9 @@
 package controllers;
 
-import play.mvc.*;
-import play.data.validation.*;
-
-import models.*;
+import models.User;
+import play.data.validation.Valid;
+import play.mvc.Before;
+import play.mvc.Controller;
 
 public class Application extends Controller {
     

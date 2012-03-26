@@ -1,10 +1,11 @@
 package controllers;
 
-import play.mvc.*;
+import java.util.List;
 
-import java.util.*;
-
-import models.*;
+import models.Product;
+import models.ProductOrder;
+import models.User;
+import play.mvc.Before;
 
 public class Products extends Application {
     
@@ -40,8 +41,9 @@ public class Products extends Application {
     
     public static void confirmOrder(Long id, ProductOrder productOrder) {
         Product product = Product.findById(id);
-        productOrder.product = product;
-        productOrder.user = connected();
+        //TODO good grief this stinks
+        productOrder.setProduct(product);
+        productOrder.setUser(connected());
         validation.valid(productOrder);
         
         // Errors or revise

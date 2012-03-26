@@ -1,6 +1,7 @@
-import play.test.*;
-import play.jobs.*;
-import models.*;
+import models.Product;
+import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+import play.test.Fixtures;
 
 @OnApplicationStart
 public class Bootstrap extends Job {
