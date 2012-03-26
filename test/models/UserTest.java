@@ -1,5 +1,6 @@
 package models;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import play.data.validation.Validation;
@@ -7,6 +8,10 @@ import play.data.validation.Validation.ValidationResult;
 import play.test.UnitTest;
 
 public class UserTest extends UnitTest {
+    @Before
+    public void setup(){
+        Validation.clear();
+    }
 
 	@Test
 	public void shouldProduceAnErrorMessageForANonWordUsername() {

@@ -19,6 +19,7 @@ public class ProductTest extends UnitTest{
     public void setUp() {
         Fixtures.deleteAllModels();
         Fixtures.loadModels("/data.yml");
+        Validation.clear();
     }
     
     @After

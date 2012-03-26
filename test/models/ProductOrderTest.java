@@ -18,12 +18,13 @@ public class ProductOrderTest extends UnitTest {
     public void setUp() {
         user = new User("name", "password", "username");
         product = new Product("Thing", new BigDecimal("19.95"));
+        Validation.clear();
     }
     
     @Test
     public void shouldShowAnErrorMessageIfTheCreditCardNumberIsBlank(){
     	ProductOrder productOrder = givenAProductOrderWithoutACreditCard();
-        
+
         ValidationResult validationResult = Validation.current().valid(productOrder);
         assertFalse(validationResult.ok);
         assertNotNull(Validation.errors(".creditCard"));
