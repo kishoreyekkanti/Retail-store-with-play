@@ -1,7 +1,7 @@
 package controllers;
 
+import annotations.Secure;
 import models.User;
-import play.data.validation.Valid;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -9,7 +9,7 @@ public class Application extends Controller {
     
     @Before
     static void addUser() {
-        User user = connected();
+        User user = connectedUser();
         if(user != null) {
             renderArgs.put("user", user);
         }
@@ -23,7 +23,7 @@ public class Application extends Controller {
             }
         }
     }
-    static User connected() {
+    protected static User connectedUser() {
         if(renderArgs.get("user") != null) {
             return renderArgs.get("user", User.class);
         }
@@ -34,10 +34,4 @@ public class Application extends Controller {
         return null;
     }
     
-
-    static User connectedUser() {
-        String userId = session.get("logged");
-        return userId == null ? null : (User) User.findById(Long.parseLong(userId));
-    }
-
 }

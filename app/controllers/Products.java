@@ -11,14 +11,14 @@ public class Products extends Application {
     
     @Before
     static void checkUser() {
-        if(connected() == null) {
+        if(connectedUser() == null) {
             flash.error("Please log in first");
             Users.index();
         }
     }
     
     public static void index() {
-        List<ProductOrder> productOrders = ProductOrder.find("byUser", connected()).fetch();
+        List<ProductOrder> productOrders = ProductOrder.find("byUser", connectedUser()).fetch();
         List<Product> products =  Product.all().fetch();
 
         render(products, productOrders);
@@ -43,7 +43,7 @@ public class Products extends Application {
         Product product = Product.findById(id);
         //TODO good grief this stinks
         productOrder.setProduct(product);
-        productOrder.setUser(connected());
+        productOrder.setUser(connectedUser());
         validation.valid(productOrder);
         
         // Errors or revise
@@ -54,7 +54,7 @@ public class Products extends Application {
         // Confirm
         if(params.get("confirm") != null) {
             productOrder.create();
-            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, product.getName(), productOrder.id);
+            flash.success("Thank you, %s, your confimation number for %s is %s", connectedUser().name, product.getName(), productOrder.id);
             index();
         }
        
@@ -75,7 +75,7 @@ public class Products extends Application {
     }
     
     public static void saveSettings(String password, String verifyPassword) {
-        User connected = connected();
+        User connected = connectedUser();
         connected.password = password;
         validation.valid(connected);
         validation.required(verifyPassword);

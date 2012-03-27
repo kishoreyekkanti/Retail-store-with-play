@@ -6,7 +6,7 @@ import play.data.validation.Valid;
 public class Users extends Application{
     
 	public static void index(){
-        if(connected() != null) {
+        if(connectedUser() != null) {
             Products.index();
         }
         render();

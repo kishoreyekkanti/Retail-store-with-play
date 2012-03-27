@@ -17,19 +17,10 @@ public class ApplicationTest {
         Fixtures.deleteAllModels();
     }
 
-
     @Test
-    public void testSaveUser() throws Exception {
 
-    }
-
-    @Test
-    public void testLogin() throws Exception {
-
-    }
-
-    @Test
-    public void testLogout() throws Exception {
+    public void shouldTestIfTheUserIsNotConnected(){
+        Application.checkSecure();
 
     }
 }
